@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Personal Website</title>
-  <style>
-    body
-    {
-   
-      width: 100%;
-      height: 100%;
-      background: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fhdwallpaper20.com%2Fwp-content%2Fuploads%2F2016%2F05%2Fsad-wallpaper-sad-wallpaper-for-boys-in-sea.jpg&f=1');
-      background-size: cover;
-      background-repeat: no-repeat;
-      overflow: hidden;
-    }
-    
-    h1
-    {
-      color: white;
-      text-align: center;
-    }
-    
-    div
-    {
-      display: flex;
-      align-items:center;
-      justify-content: center;
-      flex-direction:column;
-      width: 100%;
-      height: 100%;
-    }
-    
-  </style>
-  
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-  
-  
+<style>
+ body{
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 100vw;
+     height: 100vh;
+ }
+ .time {
+     margin: auto;
+     font-size: 10vh;
+ }
+
+ .time1 {
+    display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
+
+ h1 {
+     width: 400px;
+     font-weight: 100;
+     text-align: center;
+     background: gray;
+     font-size: 16px;
+     border: 5px solid gray;
+ }
+</style>
 <body>
-  <div>
-  <h1>
-     "The harder it takes, the sweeter it gets."
-  </h1>
-  </div>
+
+    <div class="time1">
+    <h3>BundyClock Honest Time</h3>
+    <h1 id="time" class="time">
+        04:02 PM
+    </h1>
+    </div>
+    <script src="./script.js"></script>
 </body>
 </html>
