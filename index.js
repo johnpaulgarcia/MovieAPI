@@ -117,7 +117,7 @@ function catchHandler(){
             setTimeout(()=>{
                 $('.notify').css({'display':'none'});
                 ender();
-            },10000);
+            },1000);
         }
         else{
             // 
