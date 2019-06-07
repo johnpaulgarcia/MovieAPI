@@ -39,17 +39,17 @@ function _ear(){
    action.on('click',()=>actionHander());
    back.on('click',()=>backHandler());
    floating.on('click',()=>{
-
-        $('.notify').text(``);
-        $('.notify').css({'display':'flex'});
-        $('.notify').css({'background':`url(${'./searching.gif'})`,'width':'500px','height':'450px'});
+         topContent.css({'display':'none'});
+        $('.notify').text(`Searching Pokemons....`);
+        $('.notify').css({'display':'flex','left':'50%'});
+        $('.notify').css({'background': 'none','width':'500px','height':'450px'});
         setTimeout(()=>{
             floatingHandler();
         },2000);
    });
    $('.catch').on('click',()=>{
     $('.notify').text(``);
-    $('.notify').css({'display':'flex'});
+    $('.notify').css({'display':'flex','left':'50%'});
     $('.notify').css({'background':`url(${'./lolpoke.gif'})`,'width':'500px','height':'288px'});
        setTimeout(catchHandler,1400);
    });
@@ -65,16 +65,18 @@ function catchHandler(){
     let chance = Math.floor((Math.random() * 100)+(Math.random()*30));
     if(chance>60 && pokemons.length<=8){
 
-        $('.notify').css({'display':'flex'});
+        $('.notify').css({'display':'flex','left':'30%'});
         // setTimeout(()=>{
         //     $('.notify').css({'display':'none'});
         // },1500)
-        $('.notify').css({'background':`url(${'./caught.gif'})`,'width':'500px','height':'298px'});
+        
+        $('.notify').css({'background':`url(${'./pokeball.gif'})`,'width':'260px','height':'250px','left':'50%'});
         $('.notify').text(``);
         
             setTimeout(()=>{
                 // setTimeout(()=>{
-            $('.notify').css({'display':'none'});
+                   
+            $('.notify').css({'display':'none','left':'30%'});
         // },1500)
                 if(pokemons.length<8){
                     pokemons.push(encountered);
@@ -95,35 +97,35 @@ function catchHandler(){
                 }
 
                 else {
-                    $('.notify').css({'display':'flex'});
+                    $('.notify').css({'display':'flex','left':'30%'});
                 setTimeout(()=>{
-                    $('.notify').css({'display':'none'});
+                    $('.notify').css({'display':'none','left':'30%'});
                 },1000)
-                $('.notify').css({'background':'white'});
+                $('.notify').css({'background':'white','left':'50%'});
                 $('.notify').text(`Limit Reached!`);
                 }
         
                 avatar.html('Explore to find pokemon.');
                 disp.css({'display':'none'});
                 $('#catch').css({'display':'none'});
-            },4000)
+            },1500)
         
     }
     else {
-        $('.notify').css({'display':'flex'});
+        $('.notify').css({'display':'flex','left':'50%'});
         setTimeout(()=>{
-            $('.notify').css({'display':'none'});
+            $('.notify').css({'display':'none','left':'50%'});
         },1000)
-        $('.notify').css({'background':'white'});
-        pokemons.length<=8? $('.notify').text(` ${encountered[0].name} has escaped!`): $('.notify').text(`You have reached the maximum allowed pokemons!`);
+        $('.notify').css({'background':'white','left':'50%'});
+        //pokemons.length<=8? $('.notify').text(` ${encountered[0].name} has escaped!`): $('.notify').text(`You have reached the maximum allowed pokemons!`);
         
         if(pokemons.length<=8){
-
-            $('.notify').css({'background':`url(${'./escaped.gif'})`,'width':'266px','height':'200px'});
-
+            
+            $('.notify').css({'background':'none','width':'266px','height':'200px','left':'30%'});
+            $('.notify').text(` ${encountered[0].name} has escaped!`);
 
             setTimeout(()=>{
-                $('.notify').css({'display':'none'});
+                $('.notify').css({'display':'none','left':'30%'});
                 ender();
             },1000);
         }
@@ -150,10 +152,10 @@ function ender(){
 }
 
 function floatingHandler(){
-    
+   
     $('.notify').text(``);
     $('.notify').css({'display':'none'});
-   
+    topContent.css({'display':'flex'});
 
     $.ajax(activeAreaApi).done((data)=>{
         let num = Math.floor(Math.random()*8);
