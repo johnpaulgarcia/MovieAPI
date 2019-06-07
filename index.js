@@ -6,6 +6,8 @@ const back = $('.back');
 const floating = $('.floating');
 const msa = $('.message-actual');
 const avatar = $('.avatar');
+const disp = $('.ability');
+let ca = $('.captured-actual');
 let activeRegion= "";
 let activeRegionApi = "";
 let activeCity = "";
@@ -14,8 +16,10 @@ let activeAreaApi = "";
 let limit = 8;
 let pokemons = [];
 let encountered = [];
+let sample = $('.sample');
 let found = false;
 let api = "https://pokeapi.co/api/v2/";
+let topContent = $('.topcontent');
 $(document).ready(()=>{
     _ear();
     sysFunc();
@@ -25,8 +29,10 @@ function sysFunc(){
     msa.text(`You have ${pokemons.length}/${limit} Pokemons`);
    
     getRegions();
+    avatar.html('');
    
 }
+
 
 
 function _ear(){
@@ -34,11 +40,17 @@ function _ear(){
    back.on('click',()=>backHandler());
    floating.on('click',()=>floatingHandler());
    $('.catch').on('click',()=>catchHandler());
+  
+}
+
+
+function caHandler(){
+   
 }
 
 function catchHandler(){
     let chance = Math.floor((Math.random() * 100)+(Math.random()*30));
-    if(chance>60){
+    if(chance>60 && pokemons.length<=8){
 
         $('.notify').css({'display':'flex'});
         setTimeout(()=>{
@@ -46,18 +58,20 @@ function catchHandler(){
         },1000)
         $('.notify').text(`You caught ${encountered[0].name}`);
         
+        
         if(pokemons.length<8){
             pokemons.push(encountered);
             let imarkUp = "";
+            let marker = 0;
             pokemons.forEach(key=>{
                 imarkUp+=`
-
-                <div class="captured-actual">
+                <div onclick="bagClick('${marker}')" class="captured-actual">
                     <img class="img" src="${key[1].avatar}"/>
+                    <p class="name">${key[0].name}</p>
                 </div>
-            
-                
+               
                 `;
+                marker++;
             });
             msa.text(`You have ${pokemons.length}/${limit} Pokemons`);
             $('.cap').html(imarkUp);
@@ -70,15 +84,22 @@ function catchHandler(){
         },1000)
         $('.notify').text(`Limit Reached!`);
         }
-        floatingHandler();
+
+        avatar.html('Explore to find pokemon.');
+        disp.css({'display':'none'});
+        $('#catch').css({'display':'none'});
+        
     }
     else {
         $('.notify').css({'display':'flex'});
         setTimeout(()=>{
             $('.notify').css({'display':'none'});
         },1000)
-        $('.notify').text(` ${encountered[0].name} has escaped!`);
-        floatingHandler();
+        pokemons.length<=8? $('.notify').text(` ${encountered[0].name} has escaped!`): $('.notify').text(`You have reached the maximum allowed pokemons!`);
+        encountered = [];
+        avatar.html('Explore to find pokemon.');
+        disp.css({'display':'none'});
+        $('#catch').css({'display':'none'});
     }
 }
 
@@ -115,11 +136,43 @@ function floatingHandler(){
             `;
 
             found = true;
+            let i = encountered[1];
+            let iMak = `
+                <div class="ability1">Attack   <strong>${i.attack}</strong></div>
+                <div class="ability1">Defense   <strong>${i.defense}</strong></div>
+                <div class="ability1">HP   <strong>${i.hp}</strong></div>
+                <div class="ability1">Special Attack   <strong>${i.specialAttack}</strong></div>
+                <div class="ability1">Special Defense  <strong>${i.specialDefense}</strong></div>
+                <div class="ability1">Speed   <strong>${i.speed}</strong></div>
+            `;
+            topContent.css({'display':'flex'});
+            disp.css({'display':'flex'});
+            sample.html(iMak);
             $('#catch').css({'display':'block'});
             avatar.html(imgMarkUp);
             
         })
     });
+}
+
+function bagClick(key){
+    if(confirm("Ara. Do you want to throw this lovely pokemon away?")){
+         pokemons.splice(key,1);
+         let imarkUp = "";
+         let marker = 0;
+         pokemons.forEach(key=>{
+             imarkUp+=`
+             <div onclick="bagClick('${marker}')" class="captured-actual">
+                 <img class="img" src="${key[1].avatar}"/>
+                 <p class="name">${key[0].name}</p>
+             </div>
+            
+             `;
+             marker++;
+         });
+         msa.text(`You have ${pokemons.length}/${limit} Pokemons`);
+         $('.cap').html(imarkUp);
+    }
 }
 
 function backHandler(){
@@ -142,6 +195,8 @@ function actionHander(){
 }
 
 function getRegions(){
+    topContent.css({'display':'none'});
+    $('#catch').css({'display':'none'});
     back.css({'display':'none'});
     floating.css({'display':'none'});
     where.text("You are not in any region.");
@@ -164,6 +219,9 @@ function getRegions(){
 }
 
 function getCities(name,url){
+    topContent.css({'display':'none'});
+    $('#catch').css({'display':'none'});
+    floating.css({'display':'none'});
     activeRegion = name;
     activeRegionApi = url;
     back.css({'display':'block'});
@@ -186,7 +244,8 @@ function getCities(name,url){
 }
 
 function getArea(name,url){
-    
+    floating.css({'display':'none'});
+    $('#catch').css({'display':'none'});
     activeCity = name;
     $.ajax(url).done((data)=>{
         let regions = data.areas;
@@ -209,10 +268,11 @@ function getArea(name,url){
 }
 
 function getMonsters(name,url){
+    
     activeArea = name;
     where.text(`${activeArea} , ${activeCity} , ${activeRegion} Region`);
     floating.css({'display':'block'});
-
+    avatar.html('Explore to find pokemon.');
     // start ajax
     activeAreaApi = url;
 }
