@@ -38,7 +38,15 @@ function sysFunc(){
 function _ear(){
    action.on('click',()=>actionHander());
    back.on('click',()=>backHandler());
-   floating.on('click',()=>floatingHandler());
+   floating.on('click',()=>{
+
+        $('.notify').text(``);
+        $('.notify').css({'display':'flex'});
+        $('.notify').css({'background':`url(${'./searching.gif'})`,'width':'500px','height':'450px'});
+        setTimeout(()=>{
+            floatingHandler();
+        },2000);
+   });
    $('.catch').on('click',()=>{
     $('.notify').text(``);
     $('.notify').css({'display':'flex'});
@@ -143,6 +151,8 @@ function ender(){
 
 function floatingHandler(){
     
+    $('.notify').text(``);
+    $('.notify').css({'display':'none'});
    
 
     $.ajax(activeAreaApi).done((data)=>{
