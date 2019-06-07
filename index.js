@@ -58,43 +58,47 @@ function catchHandler(){
     if(chance>60 && pokemons.length<=8){
 
         $('.notify').css({'display':'flex'});
-        setTimeout(()=>{
-            $('.notify').css({'display':'none'});
-        },1000)
-        $('.notify').css({'background':`url(${'./pokeball.gif'})`,'width':'250px','height':'260px'});
+        // setTimeout(()=>{
+        //     $('.notify').css({'display':'none'});
+        // },1500)
+        $('.notify').css({'background':`url(${'./caught.gif'})`,'width':'500px','height':'298px'});
         $('.notify').text(``);
         
-        
-        if(pokemons.length<8){
-            pokemons.push(encountered);
-            let imarkUp = "";
-            let marker = 0;
-            pokemons.forEach(key=>{
-                imarkUp+=`
-                <div onclick="bagClick('${marker}')" class="captured-actual">
-                    <img class="img" src="${key[1].avatar}"/>
-                    <p class="name">${key[0].name}</p>
-                </div>
-               
-                `;
-                marker++;
-            });
-            msa.text(`You have ${pokemons.length}/${limit} Pokemons`);
-            $('.cap').html(imarkUp);
-        }
-
-        else {
-            $('.notify').css({'display':'flex'});
-        setTimeout(()=>{
+            setTimeout(()=>{
+                // setTimeout(()=>{
             $('.notify').css({'display':'none'});
-        },1000)
-        $('.notify').css({'background':'white'});
-        $('.notify').text(`Limit Reached!`);
-        }
+        // },1500)
+                if(pokemons.length<8){
+                    pokemons.push(encountered);
+                    let imarkUp = "";
+                    let marker = 0;
+                    pokemons.forEach(key=>{
+                        imarkUp+=`
+                        <div onclick="bagClick('${marker}')" class="captured-actual">
+                            <img class="img" src="${key[1].avatar}"/>
+                            <p class="name">${key[0].name}</p>
+                        </div>
+                       
+                        `;
+                        marker++;
+                    });
+                    msa.text(`You have ${pokemons.length}/${limit} Pokemons`);
+                    $('.cap').html(imarkUp);
+                }
 
-        avatar.html('Explore to find pokemon.');
-        disp.css({'display':'none'});
-        $('#catch').css({'display':'none'});
+                else {
+                    $('.notify').css({'display':'flex'});
+                setTimeout(()=>{
+                    $('.notify').css({'display':'none'});
+                },1000)
+                $('.notify').css({'background':'white'});
+                $('.notify').text(`Limit Reached!`);
+                }
+        
+                avatar.html('Explore to find pokemon.');
+                disp.css({'display':'none'});
+                $('#catch').css({'display':'none'});
+            },4000)
         
     }
     else {
@@ -104,11 +108,37 @@ function catchHandler(){
         },1000)
         $('.notify').css({'background':'white'});
         pokemons.length<=8? $('.notify').text(` ${encountered[0].name} has escaped!`): $('.notify').text(`You have reached the maximum allowed pokemons!`);
+        
+        if(pokemons.length<=8){
+
+            $('.notify').css({'background':`url(${'./escaped.gif'})`,'width':'266px','height':'200px'});
+
+
+            setTimeout(()=>{
+                $('.notify').css({'display':'none'});
+                ender();
+            },10000);
+        }
+        else{
+            // 
+            
+            // setTimeout(()=>{
+                ender();
+            // },2000);
+           
+        }
+
+        
+    }
+}
+
+function ender(){
+   
         encountered = [];
         avatar.html('Explore to find pokemon.');
         disp.css({'display':'none'});
         $('#catch').css({'display':'none'});
-    }
+    
 }
 
 function floatingHandler(){
