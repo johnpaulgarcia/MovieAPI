@@ -1,0 +1,143 @@
+@font-face {
+  font-family: Avant;
+  src: url(../fonts/avant.ttf);
+}
+body {
+  display: flex;
+  font-family: Avant;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  width: 80vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  width: inherit;
+  height: fit-content;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: "left right right" "left right right";
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+.top .title {
+  margin: 0;
+  padding: 0;
+}
+.top .par {
+  margin: 10px;
+  line-height: 1.6;
+  font-family: Avant;
+  color: #444;
+  font-weight: bold;
+}
+
+.header {
+  background: #2d3436;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  width: inherit;
+}
+.header .logo {
+  width: 120px;
+  height: 120px;
+  background: url("/src/images/aoelogo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.header .tag {
+  font-size: 25px;
+  letter-spacing: 4px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.left {
+  grid-area: left;
+  height: 100vh;
+}
+
+.right {
+  grid-area: right;
+  height: 100vh;
+  padding: 20px;
+}
+
+.menu {
+  width: 100%;
+  height: fit-content;
+  padding: 10px 0px 10px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 10% 0;
+}
+.menu .options {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.menu .options .options-actual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 40px;
+  width: 80%;
+  border-radius: 10px;
+}
+.menu .options .options-actual:hover {
+  background: #e17055;
+}
+.menu .options .options-actual:active {
+  transform: scale(1.2);
+}
+.menu .options .options-actual a {
+  color: #2d3436;
+  text-decoration: none;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+}
+.footer .rights {
+  position: fixed;
+  bottom: 0;
+  background: #2d3436;
+  width: 100vw;
+  padding: 20px 0 0 0;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+/*# sourceMappingURL=website.css.map */
