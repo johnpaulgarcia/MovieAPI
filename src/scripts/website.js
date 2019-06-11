@@ -3,7 +3,7 @@ const civilization_api = `${api}civilizations`;
 
 let getCivilization = () => {
 
-    fetch("http://localhost:5500/?url=https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations")
+    fetch("https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations")
     .then(data=>{
        console.log(data);
     })
