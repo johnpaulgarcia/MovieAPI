@@ -176,7 +176,7 @@ a {
 .biggy {
   display: grid;
   grid-template-columns: 1fr 11fr;
-  grid-template-rows: repeat(12, 12fr);
+  grid-template-rows: repeat(auto-fit, 12fr);
   grid-template-areas: "pic log log" "desc desc desc" "more more more";
   width: inherit;
   height: fit-content; }
