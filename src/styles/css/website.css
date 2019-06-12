@@ -8,7 +8,8 @@ body {
   align-items: center;
   justify-content: start;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  background: white; }
 
 .container {
   display: grid;
@@ -16,13 +17,14 @@ body {
   height: 100vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  background: white; }
 
 .content {
   display: grid;
   width: inherit;
   height: fit-content;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 10fr;
   grid-template-areas: "left right right" "left right right"; }
 
 .top {
@@ -103,6 +105,7 @@ body {
   overflow-y: scroll;
   padding: 10px 0px 10px 0px; }
   .menu .genre-tag {
+    letter-spacing: 2px;
     margin-left: 10px;
     margin-bottom: 0;
     padding-bottom: 0; }
@@ -120,7 +123,8 @@ body {
         color: #2d3436;
         text-decoration: none;
         text-align: left;
-        letter-spacing: 1.4px; }
+        font-weight: 100;
+        letter-spacing: 1.8px; }
         .menu .options .options-actual a:hover {
           color: red; }
 
@@ -146,7 +150,8 @@ body {
 
 .next, .prev {
   box-shadow: 2px 2px 20px #fff;
-  border: 1px solid white; }
+  border: 1px solid #111;
+  background: white; }
 
 .next {
   position: fixed;
@@ -162,7 +167,7 @@ body {
   text-align: center;
   position: fixed;
   width: 120px;
-  left: 15%;
+  left: 10%;
   bottom: 4%;
   padding: 10px;
   color: #111;
@@ -176,7 +181,7 @@ a {
 .biggy {
   display: grid;
   grid-template-columns: 1fr 11fr;
-  grid-template-rows: repeat(auto-fit, 12fr);
+  grid-template-rows: 2fr 2fr 12fr;
   grid-template-areas: "pic log log" "desc desc desc" "more more more";
   width: inherit;
   height: fit-content; }
