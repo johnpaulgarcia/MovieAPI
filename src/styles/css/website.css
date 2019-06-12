@@ -67,6 +67,15 @@ body {
   align-items: center;
   justify-content: start;
   width: inherit; }
+  .header .topu {
+    list-style: none;
+    display: flex;
+    flex-direction: row; }
+    .header .topu #opti-a, .header .topu #opti-b, .header .topu #opti-c, .header .topu #opti-d {
+      color: white;
+      padding: 0px 10px 0px 10px;
+      letter-spacing: 1.4px;
+      font-weight: bolder; }
   .header .logo {
     width: 120px;
     height: 120px;
@@ -107,8 +116,6 @@ body {
       line-height: 1.4; }
       .menu .options .options-actual:hover {
         color: #e17055; }
-      .menu .options .options-actual:active {
-        transform: scale(1.2); }
       .menu .options .options-actual a {
         color: #2d3436;
         text-decoration: none;
@@ -218,5 +225,8 @@ a {
   color: red;
   font-weight: bolder;
   text-shadow: 10px 1px 5px #fff; }
+
+#home {
+  color: #fff; }
 
 /*# sourceMappingURL=website.css.map */

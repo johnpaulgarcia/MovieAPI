@@ -1,12 +1,4 @@
-const apiKey = "?api_key=f9165a1158394cba9f390c1eb6f7b13d";
-const genre = "https://api.themoviedb.org/3/genre/movie/list";
-const popMovies = "https://api.themoviedb.org/3/movie/popular?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
-const posterImage = "http://image.tmdb.org/t/p/original/";
-const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
-const movieSpec = "https://api.themoviedb.org/3/movie/";
-const afterGens = "&with_genres=";
-const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
-const title = $('.title');
+
 
 /*
 
@@ -18,9 +10,11 @@ async function popMovie(page){
     next.css({'display':'block'});
     prev.css({'display':'none'});
     title.text("MOVIE DIRECTORY");
-    await  fetch(`${popMovies}${page}`)
+    await  fetch(`${activeURL}${page}`)
     .then(res=>res.json())
     .then(data=>{
+
+        console.log(data);
         let popMovieMarkUp = "";
         let results = data.results;
 
@@ -140,6 +134,33 @@ function fetchMovie(id){
 
                 <span class="chars-actual">
                 ${data.status}
+                </span>
+
+
+            </div>
+
+
+            <div class="characters">
+
+                <p class="chars">
+                       Budget
+                </p>
+
+                <span class="chars-actual">
+                ${data.budget}
+                </span>
+
+
+            </div>
+
+            <div class="characters">
+
+                <p class="chars">
+                       Revenue
+                </p>
+
+                <span class="chars-actual">
+                ${data.revenue}
                 </span>
 
 

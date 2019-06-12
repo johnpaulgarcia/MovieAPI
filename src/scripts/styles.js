@@ -8,7 +8,30 @@ const bb = $('.bigbox');
 const next = $('.next');
 const prev = $('.prev');
 const header = $('#navi');
+const home = $('#home');
+const optia = $('#opti-a');
+const optib = $('#opti-b');
+const optic = $('#opti-c');
+const optid = $('#opti-d');
 let page = 1;
+
+
+// 
+
+
+const apiKey = "?api_key=f9165a1158394cba9f390c1eb6f7b13d";
+const genre = "https://api.themoviedb.org/3/genre/movie/list";
+const popMovies = "https://api.themoviedb.org/3/movie/popular?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const nowMovies = "https://api.themoviedb.org/3/movie/now_playing?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const topMovies = "https://api.themoviedb.org/3/movie/top_rated?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const upcomingMovies = "https://api.themoviedb.org/3/movie/upcoming?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const posterImage = "http://image.tmdb.org/t/p/original/";
+const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
+const movieSpec = "https://api.themoviedb.org/3/movie/";
+const afterGens = "&with_genres=";
+const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
+let activeURL = "";
+const title = $('.title');
 
 $(document).ready(()=>{
     clickers();
@@ -16,8 +39,13 @@ $(document).ready(()=>{
 });
 
 
+
+
 function loaders(){
     fetchGenre();
+    if(!activeURL){
+        activeURL = popMovies;
+    }
     popMovie(page);
     
 }
@@ -66,12 +94,38 @@ function clickers(){
              prev.css({'display':'none'});
            }
        }
+        popMovie(activeURL,page);
+    });
+
+    home.on('click',()=>{
+        reload();
+    });
+
+    optia.on('click',()=>{
+        activeURL = popMovies;
+        page = 1;
         popMovie(page);
     });
 
-    header.scroll(()=>{
-        console.log("Scrolling");
+    optib.on('click',()=>{
+        activeURL = nowMovies;
+        page = 1;
+        popMovie(page);
     })
+
+    optic.on('click',()=>{
+        activeURL = topMovies;
+        page = 1;
+        popMovie(page);
+    })
+
+    optid.on('click',()=>{
+        activeURL = upcomingMovies;
+        page = 1;
+        popMovie(page);
+    })
+
+   
 }
 
 function colorResetter(){

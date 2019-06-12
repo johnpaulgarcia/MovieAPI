@@ -134,6 +134,20 @@ body {
   justify-content: start;
   width: inherit;
 
+  .topu {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    
+      #opti-a,#opti-b,#opti-c,#opti-d {
+        color: white;
+        padding: 0px 10px 0px 10px;
+        letter-spacing: 1.4px;
+        font-weight: bolder;
+      }
+
+  }
+
   .logo {
 
     width: 120px;
@@ -188,26 +202,17 @@ body {
       display: flex;
       flex-direction: column;
       padding-left: 20px;
-
         .options-actual {
           line-height: 1.4;
-
            &:hover {
              color: rgba(225, 112, 85,1.0);
-
-            
            }
-
-            &:active {
-              transform: scale(1.2);
-            }
+           
            a {
              color: color('dark');
              text-decoration: none;
              text-align: left;
             letter-spacing: 1.4px;
-            
-
             &:hover {
               color: red;
             }
@@ -368,4 +373,13 @@ body {
    font-weight: bolder;
    text-shadow: 10px 1px 5px #fff;
  }
+
+ .header {
+   
+ }
+
+ #home {
+   color: #fff;
+ }
+
 
