@@ -14,7 +14,7 @@ async function popMovie(page){
     .then(res=>res.json())
     .then(data=>{
 
-        console.log(data);
+        console.log(activeURL,data);
         let popMovieMarkUp = "";
         let results = data.results;
 

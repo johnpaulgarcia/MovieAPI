@@ -13,6 +13,7 @@ const optia = $('#opti-a');
 const optib = $('#opti-b');
 const optic = $('#opti-c');
 const optid = $('#opti-d');
+const input = $('.input');
 let page = 1;
 
 
@@ -30,6 +31,7 @@ const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 const movieSpec = "https://api.themoviedb.org/3/movie/";
 const afterGens = "&with_genres=";
 const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
+const searchApi = "https://api.themoviedb.org/3/search/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=1&query=";
 let activeURL = "";
 const title = $('.title');
 
@@ -123,6 +125,15 @@ function clickers(){
         activeURL = upcomingMovies;
         page = 1;
         popMovie(page);
+    });
+
+    input.on('input',()=>{
+       if(input.val()){
+         activeURL = `${searchApi}'${input.val()}'`;
+         page = 1;
+         console.log(activeURL);
+         popMovie(page);
+       }
     })
 
    
