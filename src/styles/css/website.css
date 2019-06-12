@@ -1,7 +1,6 @@
 @font-face {
   font-family: Avant;
-  src: url(../fonts/avant.ttf);
-}
+  src: url(../fonts/avant.ttf); }
 body {
   display: flex;
   font-family: Avant;
@@ -9,8 +8,7 @@ body {
   align-items: center;
   justify-content: start;
   padding: 0;
-  margin: 0;
-}
+  margin: 0; }
 
 .container {
   display: grid;
@@ -18,35 +16,48 @@ body {
   height: 100vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .content {
   display: grid;
   width: inherit;
   height: fit-content;
   grid-template-columns: 1fr 5fr;
-  grid-template-areas: "left right right" "left right right";
-}
+  grid-template-areas: "left right right" "left right right"; }
 
 .top {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  letter-spacing: 1px;
-}
-.top .title {
-  margin: 0;
-  padding: 0;
-}
-.top .par {
-  margin: 10px;
-  line-height: 1.6;
-  font-family: Avant;
-  color: #444;
-  font-weight: bold;
-}
+  letter-spacing: 1px; }
+  .top .menu-x {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px; }
+  .top .title {
+    margin: 0;
+    padding: 0; }
+  .top .par {
+    margin: 10px;
+    line-height: 1.6;
+    font-family: Avant;
+    color: #444;
+    font-weight: bold; }
+  .top .bigbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    width: 100%;
+    height: 100vh; }
+    .top .bigbox .logos {
+      width: 100%;
+      height: 500px; }
+    .top .bigbox .description {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
 
 .header {
   background: #2d3436;
@@ -55,89 +66,157 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  width: inherit;
-}
-.header .logo {
-  width: 120px;
-  height: 120px;
-  background: url("/src/images/aoelogo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.header .tag {
-  font-size: 25px;
-  letter-spacing: 4px;
-  font-weight: bold;
-  color: #fff;
-}
+  width: inherit; }
+  .header .logo {
+    width: 120px;
+    height: 120px;
+    background: url("/src/images/aoelogo.png");
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .header .tag {
+    font-size: 25px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: #fff; }
 
 .left {
   grid-area: left;
-  height: 100vh;
-}
+  height: 100vh; }
 
 .right {
   grid-area: right;
   height: 100vh;
-  padding: 20px;
-}
+  padding: 20px; }
 
 .menu {
   width: 100%;
-  height: fit-content;
-  padding: 10px 0px 10px 0px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 10% 0;
-}
-.menu .options {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.menu .options .options-actual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  height: 40px;
-  width: 80%;
-  border-radius: 10px;
-}
-.menu .options .options-actual:hover {
-  background: #e17055;
-}
-.menu .options .options-actual:active {
-  transform: scale(1.2);
-}
-.menu .options .options-actual a {
-  color: #2d3436;
-  text-decoration: none;
-}
+  height: 60vh;
+  overflow-y: scroll;
+  padding: 10px 0px 10px 0px; }
+  .menu .genre-tag {
+    margin-left: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0; }
+  .menu .options {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px; }
+    .menu .options .options-actual {
+      line-height: 1.4; }
+      .menu .options .options-actual:hover {
+        color: #e17055; }
+      .menu .options .options-actual:active {
+        transform: scale(1.2); }
+      .menu .options .options-actual a {
+        color: #2d3436;
+        text-decoration: none;
+        text-align: left;
+        letter-spacing: 1.4px; }
+        .menu .options .options-actual a:hover {
+          color: red; }
 
 .footer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  bottom: 0;
-}
-.footer .rights {
+  bottom: 0; }
+  .footer .rights {
+    position: fixed;
+    bottom: 0;
+    background: #2d3436;
+    width: 100vw;
+    padding: 20px 0 0 0;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; }
+
+.next, .prev {
+  box-shadow: 2px 2px 20px #fff;
+  border: 1px solid white; }
+
+.next {
   position: fixed;
-  bottom: 0;
-  background: #2d3436;
-  width: 100vw;
-  padding: 20px 0 0 0;
-  letter-spacing: 2px;
-  color: #fff;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-}
+  right: 1%;
+  bottom: 4%;
+  padding: 10px;
+  color: #111;
+  text-decoration: none;
+  width: 120px;
+  text-align: center; }
+
+.prev {
+  text-align: center;
+  position: fixed;
+  width: 120px;
+  left: 15%;
+  bottom: 4%;
+  padding: 10px;
+  color: #111;
+  text-decoration: none; }
+
+a {
+  text-decoration: none;
+  letter-spacing: 1.4px;
+  color: #111; }
+
+.biggy {
+  display: grid;
+  grid-template-columns: 1fr 11fr;
+  grid-template-rows: repeat(12, 12fr);
+  grid-template-areas: "pic log log" "desc desc desc" "more more more";
+  width: inherit;
+  height: fit-content; }
+  .biggy .logox {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    grid-area: pic; }
+  .biggy .leftinfo {
+    grid-area: log; }
+  .biggy .name {
+    padding-top: 10px; }
+  .biggy .biggy-description {
+    grid-area: desc; }
+  .biggy p {
+    padding: 0;
+    margin: 0; }
+
+.more {
+  margin-top: 20px;
+  grid-area: more;
+  width: inherit;
+  height: fit-content; }
+  .more .production .p-tag {
+    width: inherit;
+    padding: 20px;
+    background: #dfe6e9;
+    color: #444;
+    font-weight: bolder;
+    letter-spacing: 1.4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); }
+  .more .production .chars {
+    margin: 10px; }
+  .more .production .chars-actual {
+    margin-left: 50px;
+    color: #6c5ce7;
+    font-weight: bold; }
+
+.title {
+  border-bottom: 5px solid #000; }
+
+.tag {
+  text-indent: 20px; }
+
+.mo {
+  color: red;
+  font-weight: bolder;
+  text-shadow: 10px 1px 5px #fff; }
 
 /*# sourceMappingURL=website.css.map */

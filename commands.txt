@@ -1,0 +1,29 @@
+sass --watch ./src/styles/sass/website.scss:./src/styles/css/website.css
+
+
+
+
+                    <div class="biggy">
+                       
+                        <div class="logox">
+
+                        </div>
+
+                        <div class="leftinfo">
+                            <p class="name">Dark Phoenix</p>
+                            <p>Genre: Action, Adventure</p>
+                            <p>Language: en</p>
+                            <p>Popularity: 17.794</p>
+                        </div>
+
+                        <div class="biggy-description">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quasi voluptas qui pariatur voluptatibus illo libero nobis, officiis, debitis dicta animi a minima aliquam, sequi quisquam vel ut. Iusto, atque?
+                        </div>
+
+
+                       
+                    
+
+                  
+
+                    </div>
