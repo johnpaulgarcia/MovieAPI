@@ -14,6 +14,7 @@ const optib = $('#opti-b');
 const optic = $('#opti-c');
 const optid = $('#opti-d');
 const input = $('.input');
+let notice = "MOVIE DIRECTORY";
 let page = 1;
 
 
@@ -132,7 +133,14 @@ function clickers(){
          activeURL = `${searchApi}'${input.val()}'`;
          page = 1;
          console.log(activeURL);
+         notice = `SEARCH RESULTS FOR "${input.val()}"`;
          popMovie(page);
+       }
+       else {
+           notice = "MOVIE DIRECTORY";
+           activeURL = popMovies;
+           page = 1;
+           popMovie(page);
        }
     })
 

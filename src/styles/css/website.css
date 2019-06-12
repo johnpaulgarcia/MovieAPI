@@ -39,7 +39,8 @@ body {
     margin-bottom: 10px; }
   .top .title {
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    text-transform: uppercase; }
   .top .par {
     margin: 10px;
     line-height: 1.6;

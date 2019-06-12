@@ -9,7 +9,8 @@
 async function popMovie(page){
     next.css({'display':'block'});
     prev.css({'display':'none'});
-    title.text("MOVIE DIRECTORY");
+    title.text(notice);
+
     await  fetch(`${activeURL}${page}`)
     .then(res=>res.json())
     .then(data=>{
@@ -69,7 +70,8 @@ function fetchGenre(){
 function fetchMovie(id){
     next.css({'display':'none'});
     prev.css({'display':'none'});
-    title.text("MOVIE INFORMATION");
+    notice = "MOVIE INFORMATION";
+    title.text(notice);
     let url =  `${movieSpec}${id}${afterMovie}`;
     let movieMk = "";
     fetch(url)
