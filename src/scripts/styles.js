@@ -107,24 +107,28 @@ function clickers(){
     optia.on('click',()=>{
         activeURL = popMovies;
         page = 1;
+        notice = "MOVIE DIRECTORY";
         popMovie(page);
     });
 
     optib.on('click',()=>{
         activeURL = nowMovies;
         page = 1;
+        notice = "MOVIE DIRECTORY";
         popMovie(page);
     })
 
     optic.on('click',()=>{
         activeURL = topMovies;
         page = 1;
+        notice = "MOVIE DIRECTORY";
         popMovie(page);
     })
 
     optid.on('click',()=>{
         activeURL = upcomingMovies;
         page = 1;
+        notice = "MOVIE DIRECTORY";
         popMovie(page);
     });
 
