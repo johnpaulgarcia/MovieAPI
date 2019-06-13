@@ -7,6 +7,7 @@
 */
 
 async function popMovie(page){
+    console.log(activeURL);
     next.css({'display':'block'});
     prev.css({'display':'none'});
     title.text(notice);
@@ -141,8 +142,7 @@ function fetchGenre(){
 }
 
 function fetchMovie(id){
-    next.css({'display':'none'});
-    prev.css({'display':'none'});
+   
     notice = "MOVIE INFORMATION";
     title.text(notice);
     let url =  `${movieSpec}${id}${afterMovie}`;
@@ -404,7 +404,7 @@ function fetchSerie(id){
             number_of_episodes,
             overview,
             poster_path,
-            episode_runtime,
+            episode_run_time,
             status,
             popularity,
             original_language,
@@ -421,7 +421,7 @@ function fetchSerie(id){
         
         <div class="biggy">
                        
-        <div style="background: url('${posterImage}${data.poster_path}');background-size:cover" class="logox">
+        <div style="background: url('${posterImage}${poster_path}');background-size:cover" class="logox">
 
         </div>
 
@@ -435,7 +435,7 @@ function fetchSerie(id){
       
 
         <div class="biggy-description">
-                ${data.overview}
+                ${overview}
         </div>
 
         <div class="more">
@@ -468,11 +468,51 @@ function fetchSerie(id){
                 </p>
 
                 <span class="chars-actual">
-                ${data.status}
+                ${status}
                 </span>
 
 
             </div>
+
+            <div class="characters">
+
+            <p class="chars">
+                  No. Of Seasons
+            </p>
+
+            <span class="chars-actual">
+            ${number_of_seasons}
+            </span>
+
+
+        </div>
+
+        <div class="characters">
+
+        <p class="chars">
+              No. Of Episodes
+        </p>
+
+        <span class="chars-actual">
+        ${number_of_episodes}
+        </span>
+
+
+    </div>
+
+    <div class="characters">
+
+    <p class="chars">
+         Time per episode
+    </p>
+
+    <span class="chars-actual">
+    ${episode_run_time[0]} mins
+    </span>
+
+
+</div>
+
 
 
         

@@ -15,7 +15,7 @@ const optic = $('#opti-c');
 const optid = $('#opti-d');
 const input = $('.input');
 let notice = "MOVIE DIRECTORY";
-let page = 1;
+let page = 1,searchPage = 1;
 
 
 // 
@@ -38,7 +38,9 @@ const movieSpec = "https://api.themoviedb.org/3/movie/";
 const afterGens = "&with_genres=";
 const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
 const gensTV = "https://api.themoviedb.org/3/discover/tv?api_key=f9165a1158394cba9f390c1eb6f7b13d";
-const searchApi = "https://api.themoviedb.org/3/search/multi?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=1&query=";
+let page_no = "&page=";
+let query = "&query=";
+const searchApi = "https://api.themoviedb.org/3/search/multi?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 let activeURL = "",activeSeries="";
 
 
@@ -57,6 +59,7 @@ const title = $('.title');
 $(document).ready(()=>{
     clickers();
     loaders();
+    
 });
 
 
@@ -72,6 +75,7 @@ function loaders(){
         activeSeries = popSeries;
     }
     popMovie(page);
+    
     
 }
 
@@ -159,12 +163,8 @@ function clickers(){
     });
 
     input.on('input',()=>{
-       if(input.val()){
-         activeURL = `${searchApi}'${input.val()}'`;
-         page = 1;
-         console.log(activeURL);
-         notice = `SEARCH RESULTS FOR "${input.val()}"`;
-         popMovie(page);
+       if(input.val().length>0){
+            searchIt(input.val());
        }
        else {
            notice = "MOVIE DIRECTORY";
@@ -180,3 +180,4 @@ function clickers(){
 function colorResetter(){
     buttons.css({'background':'white','color':'#111'});
 }
+
