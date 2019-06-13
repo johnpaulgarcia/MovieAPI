@@ -1,5 +1,13 @@
-function clickedPoster(id){
-    fetchMovie(id);
+function clickedPoster(id,type){
+    console.log(type);
+    switch(type){
+        case "tv":
+            fetchSerie(id);
+        break;
+        default:
+            fetchMovie(id);
+    }
+    
 }
 
 function reload(){

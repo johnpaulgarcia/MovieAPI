@@ -238,7 +238,9 @@ a {
 .mo {
   color: red;
   font-weight: bolder;
-  text-shadow: 10px 1px 5px #fff; }
+  text-shadow: 10px 1px 5px #fff;
+  background: white;
+  text-decoration: overline; }
 
 .header {
   display: flex;
@@ -256,5 +258,12 @@ a {
 
 #home {
   color: #fff; }
+
+.se {
+  color: white;
+  font-weight: bolder;
+  text-shadow: 10px 1px 5px #fff;
+  text-decoration: underline;
+  background: darkorange; }
 
 /*# sourceMappingURL=website.css.map */

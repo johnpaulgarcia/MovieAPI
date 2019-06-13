@@ -20,7 +20,12 @@ let page = 1;
 
 // 
 
-
+// series
+const popSeries = "https://api.themoviedb.org/3/tv/popular?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const nowSeries = "https://api.themoviedb.org/3/tv/on_the_air?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const topSeries = "https://api.themoviedb.org/3/tv/top_rated?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const upcomingSeries = "https://api.themoviedb.org/3/tv/airing_today?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
+const seriesSpec = "https://api.themoviedb.org/3/tv/";
 const apiKey = "?api_key=f9165a1158394cba9f390c1eb6f7b13d";
 const genre = "https://api.themoviedb.org/3/genre/movie/list";
 const popMovies = "https://api.themoviedb.org/3/movie/popular?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
@@ -32,8 +37,8 @@ const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 const movieSpec = "https://api.themoviedb.org/3/movie/";
 const afterGens = "&with_genres=";
 const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
-const searchApi = "https://api.themoviedb.org/3/search/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=1&query=";
-let activeURL = "";
+const searchApi = "https://api.themoviedb.org/3/search/multi?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=1&query=";
+let activeURL = "",activeSeries="";
 const title = $('.title');
 
 $(document).ready(()=>{
@@ -48,6 +53,10 @@ function loaders(){
     fetchGenre();
     if(!activeURL){
         activeURL = popMovies;
+    }
+
+    if(!activeSeries){
+        activeSeries = popSeries;
     }
     popMovie(page);
     
@@ -106,6 +115,7 @@ function clickers(){
 
     optia.on('click',()=>{
         activeURL = popMovies;
+        activeSeries = popSeries;
         page = 1;
         notice = "MOVIE DIRECTORY";
         popMovie(page);
@@ -113,6 +123,7 @@ function clickers(){
 
     optib.on('click',()=>{
         activeURL = nowMovies;
+        activeSeries = nowSeries;
         page = 1;
         notice = "MOVIE DIRECTORY";
         popMovie(page);
@@ -120,6 +131,7 @@ function clickers(){
 
     optic.on('click',()=>{
         activeURL = topMovies;
+        activeSeries = topSeries;
         page = 1;
         notice = "MOVIE DIRECTORY";
         popMovie(page);
@@ -127,6 +139,7 @@ function clickers(){
 
     optid.on('click',()=>{
         activeURL = upcomingMovies;
+        activeSeries = upcomingSeries;
         page = 1;
         notice = "MOVIE DIRECTORY";
         popMovie(page);
