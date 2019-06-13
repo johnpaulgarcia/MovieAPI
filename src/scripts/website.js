@@ -201,6 +201,8 @@ function fetchMovie(id){
 
             </div>
 
+            
+
                 <div class="characters">
 
                     <p class="chars">
@@ -231,24 +233,11 @@ function fetchMovie(id){
             <div class="characters">
 
                 <p class="chars">
-                       Budget
+                       Budget / Revenue
                 </p>
 
                 <span class="chars-actual">
-                ${data.budget}
-                </span>
-
-
-            </div>
-
-            <div class="characters">
-
-                <p class="chars">
-                       Revenue
-                </p>
-
-                <span class="chars-actual">
-                ${data.revenue}
+                ${data.budget} budget /  ${data.revenue} revenue
                 </span>
 
 
@@ -408,6 +397,10 @@ function fetchSerie(id){
             status,
             popularity,
             original_language,
+            first_air_date,
+            last_air_date,
+            networks,
+            origin_country
         } = data;
 
         let genre = [];
@@ -459,6 +452,31 @@ function fetchSerie(id){
 
             </div>
 
+            <div class="characters">
+
+                <p class="chars">
+                       PRODUCTION | COUNTRY
+                </p>
+
+                <span class="chars-actual">
+                    ${networks[0].name} | ${origin_country}
+                </span>
+
+
+            </div>
+
+            <div class="characters">
+
+            <p class="chars">
+                   Aired
+            </p>
+
+            <span class="chars-actual">
+            ${first_air_date} | Last Aired ${last_air_date}
+            </span>
+
+
+        </div>
                
 
                 <div class="characters">
@@ -481,37 +499,14 @@ function fetchSerie(id){
             </p>
 
             <span class="chars-actual">
-            ${number_of_seasons}
+            ${number_of_episodes} episodes / ${number_of_seasons} seasons /  ${episode_run_time[0]} mins per episode
             </span>
 
 
         </div>
 
-        <div class="characters">
+        
 
-        <p class="chars">
-              No. Of Episodes
-        </p>
-
-        <span class="chars-actual">
-        ${number_of_episodes}
-        </span>
-
-
-    </div>
-
-    <div class="characters">
-
-    <p class="chars">
-         Time per episode
-    </p>
-
-    <span class="chars-actual">
-    ${episode_run_time[0]} mins
-    </span>
-
-
-</div>
 
 
 
