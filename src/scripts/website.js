@@ -54,7 +54,7 @@ async function popMovie(page){
         shows.sort(function() {
             return .5 - Math.random();
           });
-        console.log(shows);
+       
         let popMovieMarkUp = "";
         shows.map(show=>{
             
@@ -273,38 +273,120 @@ function fetchMovie(id){
 }
 
 
-function fetchMovieByGenre(){
+async function fetchMovieByGenre(){
     let id = opt.val();
     title.text("MOVIE DIRECTORY");
     let url = `${gens}${afterGens}${id}`;
-    fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-        let popMovieMarkUp = "";
-        let results = data.results;
+    let urlTV = `${gensTV}${afterGens}${id}`;
+    activeURL = url;
+    activeSeries = urlTV;
+    let shows = [];
+    let getMovieByGenre = await fetch(url)
+                            .then(res=>res.json())
+                            .then(data=>{
+                                let results = data.results;
+                                Object.keys(results).map(reso=>{
+                                   let {
+                                       title,
+                                       poster_path,
+                                       id,
+                                   } = results[reso];
 
-        Object.keys(results).map((movie)=>{
-            popMovieMarkUp += `
+                                   let mObj = Object.create({
+                                       title,
+                                        id,
+                                        poster: poster_path,
+                                        type: "movie"
+                                   })
+
+                                   shows.push(mObj);
+                                })
+                            });
+    let getSeriesByGenre = await fetch(urlTV)
+                            .then(res=>res.json())
+                            .then(data=>{
+                                let results = data.results;
+                                Object.keys(results).map(reso=>{
+                                   let {
+                                       name,
+                                       poster_path,
+                                       id,
+                                   } = results[reso];
+
+                                   let mObj = Object.create({
+                                       title:name,
+                                        id,
+                                        poster: poster_path,
+                                        type: "tv"
+                                   })
+
+                                   shows.push(mObj);
+                                });
+
+                               
+                            })
+
+                            shows.sort(function() {
+                                return .5 - Math.random();
+                              });
+
+                              let popMovieMarkUp = "";
+                                    shows.map(show=>{
+            
+                                        let {type,title,poster,id} = show;
+            
+
+                                     popMovieMarkUp += `
 
 
-        <div class="smallbox">
-                     <img src="${posterImage}${results[movie].poster_path}" alt="No Poster" class="logos" />
+                                                          <div class="smallbox">
+                                                                            <img src="${posterImage}${poster}" class="logos" />
         
                         
-                     <div class="description">
-                                  <a onclick="clickedPoster('${results[movie].id}')" href="#"><p class="tit">
-                           ${results[movie].original_title}
-                     </p><a/>
-                </div>
-         </div>
+                                                             <div class="description">
+                                                                             <a onclick="clickedPoster('${id}','${type}')" href="#"><p class="tit">
+                                                                                             ${title}
+                                                                                     </p><a/>
+                                                                         </div>
+                                                                        </div>
         
         
         
         `;
-        })
-
+        
+        });
+                 
         bb.html(popMovieMarkUp);
-    })
+
+
+    // fetch(url)
+    // .then(res=>res.json())
+    // .then(data=>{
+    //     let popMovieMarkUp = "";
+    //     let results = data.results;
+
+    //     Object.keys(results).map((movie)=>{
+    //         popMovieMarkUp += `
+
+
+    //     <div class="smallbox">
+    //                  <img src="${posterImage}${results[movie].poster_path}" alt="No Poster" class="logos" />
+        
+                        
+    //                  <div class="description">
+    //                               <a onclick="clickedPoster('${results[movie].id}')" href="#"><p class="tit">
+    //                        ${results[movie].original_title}
+    //                  </p><a/>
+    //             </div>
+    //      </div>
+        
+        
+        
+    //     `;
+    //     })
+
+    //     bb.html(popMovieMarkUp);
+    // })
 }
 
 
@@ -330,7 +412,7 @@ function fetchSerie(id){
 
         let genre = [];
         genres.map(gnr=>{
-           genre.push(gnr);
+           genre.push(gnr.name);
         })
 
         genre.join(', ');

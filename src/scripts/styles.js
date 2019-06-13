@@ -37,6 +37,7 @@ const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 const movieSpec = "https://api.themoviedb.org/3/movie/";
 const afterGens = "&with_genres=";
 const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d";
+const gensTV = "https://api.themoviedb.org/3/discover/tv?api_key=f9165a1158394cba9f390c1eb6f7b13d";
 const searchApi = "https://api.themoviedb.org/3/search/multi?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=1&query=";
 let activeURL = "",activeSeries="";
 const title = $('.title');
