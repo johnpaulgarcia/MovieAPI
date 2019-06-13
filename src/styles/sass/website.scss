@@ -132,6 +132,8 @@ body {
 
 }
 
+
+
 .header {
   background: color(dark);
   height: 100px;
@@ -340,10 +342,11 @@ body {
  .biggy {
   display: grid;
   grid-template-columns: 1fr 11fr;
-  grid-template-rows: 2fr 2fr 12fr;
+  grid-template-rows: 2fr 2fr 12fr 10fr;
   grid-template-areas:
   "pic log log"
   "desc desc desc"
+  "video video video"
   "more more more";
   width: inherit;
   height: fit-content;
@@ -365,6 +368,12 @@ body {
    .name {
      padding-top: 10px;
    }
+
+   .video {
+
+    grid-area: video;
+    
+  }
 
    .biggy-description {
      grid-area: desc;

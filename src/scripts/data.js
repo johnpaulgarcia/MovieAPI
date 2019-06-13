@@ -1,8 +1,9 @@
 
-function clickedPoster(id,type){
+async function clickedPoster(name,id,type){
     next.css({'display':'none'});
     prev.css({'display':'none'});
-    
+
+
     switch(type){
         case "tv":
             fetchSerie(id);
@@ -10,7 +11,36 @@ function clickedPoster(id,type){
         default:
             fetchMovie(id);
     }
+
+    // fetchYoutube(name).then(()=>{
+    //     console.log("Fetching Sucess",movieId);
+        
+
+    // }).catch((err)=>{
+    //     console.log("ERROR");
+    // })
+
+   
+
     
+    
+    
+    
+}
+
+async function fetchYoutube(name){
+  await new Promise((resolve,reject)=>{
+    let request =  gapi.client.youtube.search.list({
+        part: 'snippet',
+        type: 'video',
+        q: encodeURIComponent(name),
+        maxResults: 1,
+    });
+    //execute
+      request.execute((response)=>{
+         console.log(response);
+    });
+   })
 }
 
 async function searchIt(keyword){
@@ -67,3 +97,16 @@ function reload(){
 function selected(){
     console.log(opt.val());
 }
+
+async function init(){
+    //    await new Promise((resolve,reject)=>{
+    //     gapi.client.setApiKey("AIzaSyAOJtaCyLSHv5TigrKBP1jhnAJo-cLALFw");
+    //     gapi.client.load("youtube","v3",function(){
+    //         console.log("Youtube API LOADED!");
+    //         resolve();
+    //     })
+    // })
+   
+}
+
+

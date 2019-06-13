@@ -15,6 +15,7 @@ const optic = $('#opti-c');
 const optid = $('#opti-d');
 const input = $('.input');
 let notice = "MOVIE DIRECTORY";
+let movieId = "";
 let page = 1,searchPage = 1;
 
 
@@ -57,9 +58,16 @@ const footah =  `
 const title = $('.title');
 
 $(document).ready(()=>{
+    
+    // init().then(()=>{
+    //     console.log("LOADED");
+    //     clickers();
+    //     loaders();
+    // }).catch((err)=>{
+    //     location.reload();
+    // });
     clickers();
     loaders();
-    
 });
 
 

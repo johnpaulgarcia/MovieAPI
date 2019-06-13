@@ -214,8 +214,8 @@ a {
 .biggy {
   display: grid;
   grid-template-columns: 1fr 11fr;
-  grid-template-rows: 2fr 2fr 12fr;
-  grid-template-areas: "pic log log" "desc desc desc" "more more more";
+  grid-template-rows: 2fr 2fr 12fr 10fr;
+  grid-template-areas: "pic log log" "desc desc desc" "video video video" "more more more";
   width: inherit;
   height: fit-content; }
   .biggy .logox {
@@ -227,6 +227,8 @@ a {
     grid-area: log; }
   .biggy .name {
     padding-top: 10px; }
+  .biggy .video {
+    grid-area: video; }
   .biggy .biggy-description {
     grid-area: desc; }
   .biggy p {

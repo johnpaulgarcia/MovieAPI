@@ -70,7 +70,7 @@ async function popMovie(page){
         
                         
                      <div class="description">
-                                  <a onclick="clickedPoster('${id}','${type}')" href="#"><p class="tit">
+                                  <a onclick="clickedPoster('${title}','${id}','${type}')" href="#"><p class="tit">
                            ${title}
                      </p><a/>
                 </div>
@@ -185,6 +185,12 @@ function fetchMovie(id){
 
         <div class="biggy-description">
                 ${data.overview}
+        </div>
+
+        <div class="video">
+
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         </div>
 
         <div class="more">
@@ -448,6 +454,12 @@ function fetchSerie(id){
 
         <div class="biggy-description">
                 ${overview}
+        </div>
+
+        <div class="video">
+
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${movieId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         </div>
 
         <div class="more">
