@@ -243,6 +243,17 @@ body {
     }
 }
 
+.foot {
+  width: 68vw;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #222;
+  letter-spacing: 1.4px;
+  justify-content: center;
+}
+
 .footer {
 
   display: flex;

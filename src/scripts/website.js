@@ -81,7 +81,7 @@ async function popMovie(page){
         
         });
                  
-        bb.html(popMovieMarkUp);
+        bb.html(popMovieMarkUp+footah);
    
 
     // return await  fetch(`${activeURL}${page}`)
