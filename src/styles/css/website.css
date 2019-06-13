@@ -53,6 +53,10 @@ body {
     grid-gap: 20px;
     width: 100%;
     height: 100vh; }
+    .top .bigbox .smallbox:nth-child(even) {
+      clip-path: polygon(50% 0%, 94% 6%, 100% 60%, 96% 97%, 6% 93%, 0% 60%, 1% 3%); }
+    .top .bigbox .smallbox:nth-child(odd) {
+      clip-path: polygon(50% 0%, 94% 6%, 100% 60%, 85% 94%, 9% 95%, 0% 60%, 4% 8%); }
     .top .bigbox .logos {
       width: 100%;
       height: 500px; }
@@ -69,7 +73,8 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  width: inherit; }
+  width: inherit;
+  clip-path: polygon(0% 5%, 100% 30%, 100% 900%, 5% 100%); }
   .header .topu {
     list-style: none;
     display: flex;
@@ -89,7 +94,8 @@ body {
     font-size: 25px;
     letter-spacing: 4px;
     font-weight: bold;
-    color: #fff; }
+    color: #fff;
+    margin-left: 40px; }
 
 .left {
   grid-area: left;
