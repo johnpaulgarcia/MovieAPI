@@ -1,2 +1,7 @@
 AIzaSyAOJtaCyLSHv5TigrKBP1jhnAJo-cLALFw
 sass --watch ./src/styles/sass/website.scss:./src/styles/css/website.css
+
+DAILYMOTION
+
+https://api.dailymotion.com/videos&country=pk&search=Avengers+trailer&limit=1
+<iframe frameborder="0" width="480" height="270" src="https://www.dailymotion.com/embed/video/x7at2g7" allowfullscreen allow="autoplay"></iframe>

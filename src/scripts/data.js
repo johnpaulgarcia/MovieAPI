@@ -2,7 +2,18 @@
 async function clickedPoster(name,id,type){
     next.css({'display':'none'});
     prev.css({'display':'none'});
+    let encoded = encodeURIComponent(name+" movie trailer");
+    console.log(encoded);
+    let api = `https://api.dailymotion.com/videos&search=${encoded}&limit=1`;
 
+    await fetch(api)
+    .then(res=>res.json())
+    .then(data=>{
+        let id = data.list[0].id;
+        movieId = id;
+        });
+
+        console.log(movieId);
 
     switch(type){
         case "tv":

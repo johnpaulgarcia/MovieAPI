@@ -189,8 +189,7 @@ function fetchMovie(id){
 
         <div class="video">
 
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+        <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
         </div>
 
         <div class="more">
@@ -457,9 +456,7 @@ function fetchSerie(id){
         </div>
 
         <div class="video">
-
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${movieId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+        <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
         </div>
 
         <div class="more">
