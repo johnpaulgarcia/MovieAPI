@@ -54,9 +54,9 @@ function fetchGenre(){
             let id = genres[genre].id;
             let name = genres[genre].name;
             genreMarkup +=`
-                <li id="civ" class="options-actual">
-                    <a onclick="fetchMovieByGenre('${id}')">${name}</a>
-                </li>  
+                <option onclick="fetchMovieByGenre('${id}')" id="civ" class="options-actual">
+                   ${name}
+                </option>  
             `;
             
            
