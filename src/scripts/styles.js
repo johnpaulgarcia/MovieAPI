@@ -27,7 +27,7 @@ const popMovies = "https://api.themoviedb.org/3/movie/popular?api_key=f9165a1158
 const nowMovies = "https://api.themoviedb.org/3/movie/now_playing?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
 const topMovies = "https://api.themoviedb.org/3/movie/top_rated?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
 const upcomingMovies = "https://api.themoviedb.org/3/movie/upcoming?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US&page=";
-const posterImage = "http://image.tmdb.org/t/p/original/";
+const posterImage = "http://image.tmdb.org/t/p/w342/";
 const afterMovie = "?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 const movieSpec = "https://api.themoviedb.org/3/movie/";
 const afterGens = "&with_genres=";

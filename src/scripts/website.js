@@ -11,7 +11,7 @@ async function popMovie(page){
     prev.css({'display':'none'});
     title.text(notice);
 
-    await  fetch(`${activeURL}${page}`)
+    return await  fetch(`${activeURL}${page}`)
     .then(res=>res.json())
     .then(data=>{
 
