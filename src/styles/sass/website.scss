@@ -189,7 +189,7 @@ body {
   margin-top: 50px;
   width: 100%;
   height: 60vh;
-  overflow-y: scroll;
+  overflow: hidden;
   padding: 10px 0px 10px 0px;
  
 
@@ -203,11 +203,14 @@ body {
 
     .options {
       margin-top: 5px;
+      padding: 10px;
       list-style: none;
       padding: 0;
       display: flex;
       flex-direction: column;
       padding-left: 20px;
+
+  
         .options-actual {
           line-height: 1.4;
            &:hover {

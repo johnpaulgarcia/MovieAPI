@@ -54,7 +54,7 @@ function fetchGenre(){
             let id = genres[genre].id;
             let name = genres[genre].name;
             genreMarkup +=`
-                <option onclick="fetchMovieByGenre('${id}')" id="civ" class="options-actual">
+                <option value="${id}" id="civ" class="options-actual">
                    ${name}
                 </option>  
             `;
@@ -187,7 +187,8 @@ function fetchMovie(id){
 }
 
 
-function fetchMovieByGenre(id){
+function fetchMovieByGenre(){
+    let id = opt.val();
     title.text("MOVIE DIRECTORY");
     let url = `${gens}${afterGens}${id}`;
     fetch(url)
