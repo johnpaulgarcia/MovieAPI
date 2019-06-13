@@ -62,6 +62,7 @@ body {
       height: 500px; }
     .top .bigbox .description {
       padding: 10px;
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
       justify-content: center; }
@@ -244,7 +245,8 @@ a {
     color: #444;
     font-weight: bolder;
     letter-spacing: 1.4px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); }
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%); }
   .more .production .chars {
     margin: 10px; }
   .more .production .chars-actual {
