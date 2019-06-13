@@ -2,7 +2,7 @@
 function clickedPoster(id,type){
     next.css({'display':'none'});
     prev.css({'display':'none'});
-    console.log(type);
+    
     switch(type){
         case "tv":
             fetchSerie(id);

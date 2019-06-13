@@ -7,7 +7,7 @@
 */
 
 async function popMovie(page){
-    console.log(activeURL);
+   
     next.css({'display':'block'});
     prev.css({'display':'none'});
     title.text(notice);
@@ -153,9 +153,16 @@ function fetchMovie(id){
         let title = data.original_title;
         let logo = data.poster_path;
         let genre = [];
+        let prod = [];
         data.genres.map(genr=>{
             genre.push(genr.name);
         });
+
+        data.production_companies.map(pd=>{
+            prod.push(`${pd.name} | ${pd.origin_country}`);
+        });
+
+        prod = prod.join(', ');
         genre = genre.join(', ')
         console.log(data);
         let popularity = data.popularity;
@@ -201,6 +208,18 @@ function fetchMovie(id){
 
             </div>
 
+            <div class="characters">
+
+                    <p class="chars">
+                           Production Companies
+                    </p>
+
+                    <span class="chars-actual">
+                    ${prod}
+                    </span>
+
+
+                </div>
             
 
                 <div class="characters">
