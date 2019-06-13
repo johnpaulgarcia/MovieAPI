@@ -56,7 +56,7 @@ async function searchIt(keyword){
 
                            
                        })
-                       bb.html(popMovieMarkUp);
+                       bb.html(popMovieMarkUp+footah);
                     })
 }
 

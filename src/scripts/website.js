@@ -274,7 +274,7 @@ function fetchMovie(id){
         
         
         `;
-        bb.html(movieMk);
+        bb.html(movieMk+footah);
        
     })
    
@@ -364,7 +364,7 @@ async function fetchMovieByGenre(){
         
         });
                  
-        bb.html(popMovieMarkUp);
+        bb.html(popMovieMarkUp+footah);
 
 
     // fetch(url)
@@ -545,7 +545,7 @@ function fetchSerie(id){
         
         
         `;
-        bb.html(movieMk);
+        bb.html(movieMk+footah);
     })
 }
 

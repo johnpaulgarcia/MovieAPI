@@ -48,7 +48,7 @@ let activeURL = "",activeSeries="";
 const footah =  `
 
     <div class="foot">
-        POWERED BY THEMOVIEDB API
+       
     </div>
 
 `;
