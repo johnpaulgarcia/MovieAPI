@@ -70,6 +70,8 @@ body {
   
 }
 
+
+
 .content {
   display: grid;
   width: inherit;
@@ -390,6 +392,7 @@ body {
    .video {
 
     grid-area: video;
+    background: #333;
     
   }
 
@@ -482,3 +485,12 @@ body {
   background: darkorange;
 }
 
+
+.notice-1 {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  top: 50%;
+  left: 40%;
+}

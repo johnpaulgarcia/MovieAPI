@@ -177,6 +177,17 @@ function fetchMovie(id){
         prod = prod.join(', ');
         genre = genre.join(', ');
         let popularity = data.popularity;
+
+        let frame = `<iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
+        `;
+
+        if(globalError){
+            
+            frame=`<p class="notice-1">No video available man.</p>`;
+            globalError = false;
+        }
+        
+
         movieMk+=  `
         
         <div class="biggy">
@@ -200,7 +211,8 @@ function fetchMovie(id){
 
         <div class="video">
 
-        <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
+        ${frame}
+       
         </div>
 
         <div class="more">
@@ -453,6 +465,14 @@ function fetchSerie(id){
 
         genre.join(', ');
 
+        let frame = `<iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
+        `;
+
+        if(globalError){
+            frame=`<p class="notice-1">No video available man.</p>`;
+            globalError = false;
+        }
+
         movieMk+=  `
         
         <div class="biggy">
@@ -475,7 +495,7 @@ function fetchSerie(id){
         </div>
 
         <div class="video">
-        <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
+            ${frame}
         </div>
 
         <div class="more">

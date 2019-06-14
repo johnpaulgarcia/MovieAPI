@@ -16,6 +16,7 @@ const optid = $('#opti-d');
 const input = $('.input');
 let notice = "MOVIE DIRECTORY";
 let movieId = "";
+let globalError = false;
 let page = 1,searchPage = 1;
 
 
@@ -143,6 +144,7 @@ function clickers(){
         activeSeries = popSeries;
         page = 1;
         notice = "MOVIE DIRECTORY";
+       
         popMovie(page);
     });
 

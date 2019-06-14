@@ -8,7 +8,10 @@ async function clickedPoster(name,id,type){
     await fetch(api)
     .then(res=>res.json())
     .then(data=>{
-        movieId = data.list[0].id;
+                movieId = data.list[0].id;
+        }).catch((err)=>{
+                globalError = true;
+               
         });
 
        

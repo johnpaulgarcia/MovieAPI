@@ -239,7 +239,8 @@ a {
   .biggy .name {
     padding-top: 10px; }
   .biggy .video {
-    grid-area: video; }
+    grid-area: video;
+    background: #333; }
   .biggy .biggy-description {
     grid-area: desc; }
   .biggy p {
@@ -303,5 +304,13 @@ a {
   text-shadow: 10px 1px 5px #fff;
   text-decoration: underline;
   background: darkorange; }
+
+.notice-1 {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  top: 50%;
+  left: 40%; }
 
 /*# sourceMappingURL=website.css.map */
