@@ -3,23 +3,23 @@ async function clickedPoster(name,id,type){
     next.css({'display':'none'});
     prev.css({'display':'none'});
     let encoded = encodeURIComponent(name+" movie trailer");
-    console.log(encoded);
+    console.log(name,id);
     let api = `https://api.dailymotion.com/videos&search=${encoded}&limit=1`;
-
     await fetch(api)
     .then(res=>res.json())
     .then(data=>{
-        let id = data.list[0].id;
-        movieId = id;
+        movieId = data.list[0].id;
         });
 
-        console.log(movieId);
+       
 
     switch(type){
         case "tv":
+          
             fetchSerie(id);
         break;
         default:
+            
             fetchMovie(id);
     }
 
@@ -55,6 +55,8 @@ async function fetchYoutube(name){
 }
 
 async function searchIt(keyword){
+    $('.note').css({'display':'block'});
+    bb.css({'display':'none'});
     keyword = keyword.split(' ').join('%20');
     let searchy = `${searchApi}${page_no}${searchPage}${query}${keyword}`;
     let popMovieMarkUp = "";
@@ -69,6 +71,7 @@ async function searchIt(keyword){
                                poster_path,
                                id,
                            } = results[res];
+                         
                            let title = name;
                            let type = "tv";
                           if(original_title){
@@ -85,7 +88,7 @@ async function searchIt(keyword){
                           
                                           
                                        <div class="description">
-                                                    <a onclick="clickedPoster('${id}','${type}')" href="#"><p class="tit">
+                                                    <a onclick="clickedPoster('${title}','${id}','${type}')" href="#"><p class="tit">
                                              ${title}
                                        </p><a/>
                                   </div>
@@ -98,6 +101,8 @@ async function searchIt(keyword){
                            
                        })
                        bb.html(popMovieMarkUp+footah);
+                       $('.note').css({'display':'none'});
+                        bb.css({'display':'grid'});
                     })
 }
 

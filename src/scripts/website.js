@@ -23,6 +23,8 @@ async function popMovie(page){
                             let id = results[movie].id;
                             let poster = results[movie].poster_path;
                             let title = results[movie].original_title;
+
+                            
                             
                             let mObj = Object.create({
                                 id,
@@ -158,17 +160,22 @@ function fetchMovie(id){
         let logo = data.poster_path;
         let genre = [];
         let prod = [];
-        data.genres.map(genr=>{
-            genre.push(genr.name);
-        });
+      
+        
+    //     if(data.genres){
+    //         data.genres.map(genr=>{
+    //             genre.push(genr.name);
+    //         });
+    //     }
 
-        data.production_companies.map(pd=>{
-            prod.push(`${pd.name} | ${pd.origin_country}`);
-        });
+    //    if(data.production_companies){
+    //     data.production_companies.map(pd=>{
+    //         prod.push(`${pd.name} | ${pd.origin_country}`);
+    //     });
+    //    }
 
         prod = prod.join(', ');
-        genre = genre.join(', ')
-        console.log(data);
+        genre = genre.join(', ');
         let popularity = data.popularity;
         movieMk+=  `
         
