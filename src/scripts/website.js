@@ -25,7 +25,7 @@ async function popMovie(page){
                             let title = results[movie].original_title;
 
                             
-                            
+                           
                             let mObj = Object.create({
                                 id,
                                 poster,
@@ -52,7 +52,7 @@ async function popMovie(page){
                                 type: "tv"
                             });
 
-                            shows.push(mObj);
+                            //shows.push(mObj);
                     });
                 });
         
@@ -122,8 +122,8 @@ async function popMovie(page){
     // });
 }
 
-function fetchGenre(){
-    fetch(`${genre}${apiKey}`)
+async function fetchGenre(){
+    await fetch(`${genre}${apiKey}`)
     .then(data=>data.json())
     .then(key=>{
         let genres = key.genres;
@@ -146,168 +146,201 @@ function fetchGenre(){
     })
 }
 
-function fetchMovie(id){
+async function fetchMovie(id){
     $('.note').css({'display':'block'});
     bb.css({'display':'none'});
     notice = "MOVIE INFORMATION";
     title.text(notice);
     let url =  `${movieSpec}${id}${afterMovie}`;
-    let movieMk = "";
-    fetch(url)
+  
+     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-        let title = data.original_title;
-        let logo = data.poster_path;
-        let genre = [];
-        let prod = [];
-      
         
-        if(data.genres){
-            data.genres.map(genr=>{
-                genre.push(genr.name);
-            });
-        }
+            getURL(data,data.imdb_id);
+       
+    })
 
-       if(data.production_companies){
-        data.production_companies.map(pd=>{
-            prod.push(`${pd.name} | ${pd.origin_country}`);
+}
+
+function toDesign(data,videoURL){
+    let movieMk = "";
+    console.log("VIDEOURL",videoURL,data);
+
+    let title = data.original_title;
+    let logo = data.poster_path;
+    let genre = [];
+    let prod = [];
+   
+    if(data.genres){
+        data.genres.map(genr=>{
+            genre.push(genr.name);
         });
-       }
+    }
 
-        prod = prod.join(', ');
-        genre = genre.join(', ');
-        let popularity = data.popularity;
+   if(data.production_companies){
+    data.production_companies.map(pd=>{
+        prod.push(`${pd.name} | ${pd.origin_country}`);
+    });
+   }
 
-        let frame = `<iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
-        `;
+    prod = prod.join(', ');
+    genre = genre.join(', ');
+    let popularity = data.popularity;
 
-        if(globalError){
-            
-            frame=`<p class="notice-1">No video available man.</p>`;
-            globalError = false;
-        }
+   
+
+    // let frame = `<iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/${movieId}" allowfullscreen allow="autoplay"></iframe>
+    // `;
+
+    // if(globalError){
         
+    //     frame=`<p class="notice-1">No video available man.</p>`;
+    //     globalError = false;
+    // }
+    let src = "";
+    if(videoURL.match(/.mp4/g)){
+       src =`<source src="${videoURL}" type="video/mp4"></source>`;
+    }
+    else {
+        src =`<source src="${videoURL}" type="video/mp4">`;
+    }
 
-        movieMk+=  `
-        
-        <div class="biggy">
-                       
-        <div style="background: url('${posterImage}${data.poster_path}');background-size:cover" class="logox">
-
-        </div>
-
-        <div class="leftinfo">
-            <p class="name">${title}</p>
-            <p>Genre: ${genre}</p>
-            <p>Language: ${data.original_language}</p>
-            <p>Popularity: ${popularity}</p>
-        </div>
-
-      
-
-        <div class="biggy-description">
-                ${data.overview}
-        </div>
-
-        <div class="video">
-
-        ${frame}
-       
-        </div>
-
-        <div class="more">
-            <div class="production">
-                <div class="p-tag">
-
-                    INFO
-
-                </div>
-
-                <div class="characters">
-
-                <p class="chars">
-                       TYPE
-                </p>
-
-                <span class="chars-actual">
-                 MOVIE
-                </span>
-
-
-            </div>
-
-            <div class="characters">
-
-                    <p class="chars">
-                           Production Companies
-                    </p>
-
-                    <span class="chars-actual">
-                    ${prod}
-                    </span>
-
-
-                </div>
-            
-
-                <div class="characters">
-
-                    <p class="chars">
-                            Release Date
-                    </p>
-
-                    <span class="chars-actual">
-                    ${data.release_date}
-                    </span>
-
-
-                </div>
-
-                <div class="characters">
-
-                <p class="chars">
-                       Status
-                </p>
-
-                <span class="chars-actual">
-                ${data.status}
-                </span>
-
-
-            </div>
-
-
-            <div class="characters">
-
-                <p class="chars">
-                       Budget / Revenue
-                </p>
-
-                <span class="chars-actual">
-                ${data.budget} budget /  ${data.revenue} revenue
-                </span>
-
-
-            </div>
-            <div>
-        </div>
-
-
-       
+    movieMk+=  `
     
+    <div class="biggy">
+                   
+    <div style="background: url('${posterImage}${data.poster_path}');background-size:cover" class="logox">
+
+    </div>
+
+    <div class="leftinfo">
+        <p class="name">${title}</p>
+        <p>Genre: ${genre}</p>
+        <p>Language: ${data.original_language}</p>
+        <p>Popularity: ${popularity}</p>
+    </div>
 
   
 
+    <div class="biggy-description">
+            ${data.overview}
     </div>
-        
-        
-        `;
-        bb.html(movieMk+footah);
-        $('.note').css({'display':'none'});
-        bb.css({'display':'grid'});
-       
-    })
+
+    <div class="video">
+
+    <video width="100%" height="100%" controls>
+        ${src}
+    Your browser does not support HTML5 video.
+  </video>
    
+    </div>
+
+    <div class="more">
+        <div class="production">
+            <div class="p-tag">
+
+                INFO
+
+            </div>
+
+            <div class="characters">
+
+            <p class="chars">
+                   TYPE
+            </p>
+
+            <span class="chars-actual">
+             MOVIE
+            </span>
+
+
+        </div>
+
+        <div class="characters">
+
+                <p class="chars">
+                       Production Companies
+                </p>
+
+                <span class="chars-actual">
+                ${prod}
+                </span>
+
+
+            </div>
+        
+
+            <div class="characters">
+
+                <p class="chars">
+                        Release Date
+                </p>
+
+                <span class="chars-actual">
+                ${data.release_date}
+                </span>
+
+
+            </div>
+
+            <div class="characters">
+
+            <p class="chars">
+                   Status
+            </p>
+
+            <span class="chars-actual">
+            ${data.status}
+            </span>
+
+
+        </div>
+
+
+        <div class="characters">
+
+            <p class="chars">
+                   Budget / Revenue
+            </p>
+
+            <span class="chars-actual">
+            ${data.budget} budget /  ${data.revenue} revenue
+            </span>
+
+
+        </div>
+        <div>
+    </div>
+
+
+   
+
+
+
+
+</div>
+    
+    
+    `;
+    bb.html(movieMk+footah);
+    $('.note').css({'display':'none'});
+    bb.css({'display':'grid'});
+
+}
+
+async function getURL(datax,imdb){
+    let url = `https://cors-anywhere.herokuapp.com/https://www.myapifilms.com/imdb/idIMDB?idIMDB=${imdb}&token=0e3c0283-e1e1-442c-8551-bebcb72a5699&format=json&language=en-us&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=1&movieTrivia=0&awards=0&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=0&directors=1&writers=1`;
+                console.log("URL",url);
+                   await fetch(url)
+                .then(res=>res.json())
+                .then(data=>{
+                     videoURL = data.data.movies[0].trailer.qualities[1].videoURL;
+                     toDesign(datax,videoURL);
+                }).catch((err)=>{
+                    videoURL = "http://nourl";
+                    toDesign(datax,videoURL);
+                });
 }
 
 
@@ -457,6 +490,9 @@ function fetchSerie(id){
             networks,
             origin_country
         } = data;
+
+        activeImdb = data.imdb_id;
+        console.log(data);
 
         let genre = [];
         genres.map(gnr=>{

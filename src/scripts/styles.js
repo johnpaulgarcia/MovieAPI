@@ -16,6 +16,7 @@ const optid = $('#opti-d');
 const input = $('.input');
 let notice = "MOVIE DIRECTORY";
 let movieId = "";
+let activeImdb = "";
 let globalError = false;
 let page = 1,searchPage = 1;
 
@@ -42,9 +43,9 @@ const gens = "https://api.themoviedb.org/3/discover/movie?api_key=f9165a1158394c
 const gensTV = "https://api.themoviedb.org/3/discover/tv?api_key=f9165a1158394cba9f390c1eb6f7b13d";
 let page_no = "&page=";
 let query = "&query=";
-const searchApi = "https://api.themoviedb.org/3/search/multi?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
+const searchApi = "https://api.themoviedb.org/3/search/movie?api_key=f9165a1158394cba9f390c1eb6f7b13d&language=en-US";
 let activeURL = "",activeSeries="";
-
+let movieMk = "";
 
 
 const footah =  `

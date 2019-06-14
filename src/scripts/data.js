@@ -2,28 +2,29 @@
 async function clickedPoster(name,id,type){
     next.css({'display':'none'});
     prev.css({'display':'none'});
-    let encoded = encodeURIComponent(name+" movie trailer");
-    console.log(name,id);
-    let api = `https://api.dailymotion.com/videos&search=${encoded}&limit=1`;
-    await fetch(api)
-    .then(res=>res.json())
-    .then(data=>{
-                movieId = data.list[0].id;
-        }).catch((err)=>{
-                globalError = true;
-               
-        });
+    movieId = 0;
+    
 
        
 
     switch(type){
         case "tv":
-          
+            let encoded = encodeURIComponent(name+" movie trailer");
+             console.log(name,id);
+                 let api = `https://api.dailymotion.com/videos&search=${encoded}&limit=1`;
+                     await fetch(api)
+                        .then(res=>res.json())
+                        .then(data=>{
+                             movieId = data.list[0].id;
+                        }).catch((err)=>{
+                        globalError = true;
+               
+        });
             fetchSerie(id);
         break;
         default:
+                fetchMovie(id);
             
-            fetchMovie(id);
     }
 
     // fetchYoutube(name).then(()=>{
