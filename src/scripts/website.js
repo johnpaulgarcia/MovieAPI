@@ -165,7 +165,7 @@ async function fetchMovie(id){
 
 function toDesign(data,videoURL){
     let movieMk = "";
-    console.log("VIDEOURL",videoURL,data);
+   
 
     let title = data.original_title;
     let logo = data.poster_path;
@@ -331,11 +331,11 @@ function toDesign(data,videoURL){
 
 async function getURL(datax,imdb){
     let url = `https://cors-anywhere.herokuapp.com/https://www.myapifilms.com/imdb/idIMDB?idIMDB=${imdb}&token=0e3c0283-e1e1-442c-8551-bebcb72a5699&format=json&language=en-us&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=1&movieTrivia=0&awards=0&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=0&directors=1&writers=1`;
-                console.log("URL",url);
+               
                    await fetch(url)
                 .then(res=>res.json())
                 .then(data=>{
-                     videoURL = data.data.movies[0].trailer.qualities[1].videoURL;
+                     videoURL = data.data.movies[0].trailer.qualities[0].videoURL;
                      toDesign(datax,videoURL);
                 }).catch((err)=>{
                     videoURL = "http://nourl";
@@ -492,7 +492,7 @@ function fetchSerie(id){
         } = data;
 
         activeImdb = data.imdb_id;
-        console.log(data);
+       
 
         let genre = [];
         genres.map(gnr=>{
