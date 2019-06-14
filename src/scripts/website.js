@@ -10,6 +10,8 @@ async function popMovie(page){
    
     next.css({'display':'block'});
     prev.css({'display':'none'});
+    $('.note').css({'display':'block'});
+    bb.css({'display':'none'});
     title.text(notice);
     let shows = [];
 
@@ -83,7 +85,8 @@ async function popMovie(page){
         });
                  
         bb.html(popMovieMarkUp+footah);
-   
+        $('.note').css({'display':'none'});
+        bb.css({'display':'grid'});
 
     // return await  fetch(`${activeURL}${page}`)
     // .then(res=>res.json())
@@ -142,7 +145,8 @@ function fetchGenre(){
 }
 
 function fetchMovie(id){
-   
+    $('.note').css({'display':'block'});
+    bb.css({'display':'none'});
     notice = "MOVIE INFORMATION";
     title.text(notice);
     let url =  `${movieSpec}${id}${afterMovie}`;
@@ -280,6 +284,8 @@ function fetchMovie(id){
         
         `;
         bb.html(movieMk+footah);
+        $('.note').css({'display':'none'});
+        bb.css({'display':'grid'});
        
     })
    
@@ -287,6 +293,8 @@ function fetchMovie(id){
 
 
 async function fetchMovieByGenre(){
+    $('.note').css({'display':'block'});
+    bb.css({'display':'none'});
     let id = opt.val();
     title.text("MOVIE DIRECTORY");
     let url = `${gens}${afterGens}${id}`;
@@ -370,6 +378,8 @@ async function fetchMovieByGenre(){
         });
                  
         bb.html(popMovieMarkUp+footah);
+        $('.note').css({'display':'none'});
+        bb.css({'display':'grid'});
 
 
     // fetch(url)
@@ -404,6 +414,8 @@ async function fetchMovieByGenre(){
 
 
 function fetchSerie(id){
+    $('.note').css({'display':'block'});
+    bb.css({'display':'none'});
     title.text("SERIES INFORMATION");
     let movieMk = "";
     let url = `${seriesSpec}${id}${afterMovie}`;
@@ -555,6 +567,8 @@ function fetchSerie(id){
         
         `;
         bb.html(movieMk+footah);
+        $('.note').css({'display':'none'});
+        bb.css({'display':'grid'});
     })
 }
 
