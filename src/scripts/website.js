@@ -74,7 +74,7 @@ async function popMovie(page){
         
                         
                      <div class="description">
-                                  <a onclick="clickedPoster('${title}','${id}','${type}')" href="#"><p class="tit">
+                                  <a onclick="clickedPoster('${escape(title)}','${escape(id)}','${escape(type)}')" href="#"><p class="tit">
                            ${title}
                      </p><a/>
                 </div>
@@ -372,7 +372,7 @@ async function fetchMovieByGenre(){
         
                         
                                                              <div class="description">
-                                                                             <a onclick="clickedPoster('${id}','${type}')" href="#"><p class="tit">
+                                                                             <a onclick="clickedPoster('${escape(title)}','${escape(id)}','${escape(type)}')" href="#"><p class="tit">
                                                                                              ${title}
                                                                                      </p><a/>
                                                                          </div>
