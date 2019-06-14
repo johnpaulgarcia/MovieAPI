@@ -162,17 +162,17 @@ function fetchMovie(id){
         let prod = [];
       
         
-    //     if(data.genres){
-    //         data.genres.map(genr=>{
-    //             genre.push(genr.name);
-    //         });
-    //     }
+        if(data.genres){
+            data.genres.map(genr=>{
+                genre.push(genr.name);
+            });
+        }
 
-    //    if(data.production_companies){
-    //     data.production_companies.map(pd=>{
-    //         prod.push(`${pd.name} | ${pd.origin_country}`);
-    //     });
-    //    }
+       if(data.production_companies){
+        data.production_companies.map(pd=>{
+            prod.push(`${pd.name} | ${pd.origin_country}`);
+        });
+       }
 
         prod = prod.join(', ');
         genre = genre.join(', ');
