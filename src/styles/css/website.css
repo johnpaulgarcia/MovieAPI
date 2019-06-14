@@ -155,20 +155,6 @@ body {
         .menu .options .options-actual a:hover {
           color: red; }
 
-.foot {
-  position: fixed;
-  bottom: 0;
-  text-shadow: 2px 4px 10px #fff;
-  font-weight: bold;
-  width: 68vw;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: orangered;
-  letter-spacing: 1.4px;
-  justify-content: center; }
-
 .footer {
   display: flex;
   align-items: center;
